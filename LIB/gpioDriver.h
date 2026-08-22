@@ -1,5 +1,6 @@
 #ifndef GPIO_DRIVER_H
 #define GPIO_DRIVER_H
+#include <stdbool.h>
 // define all ports 
 // offset of modr 
 // base + offset
@@ -15,8 +16,8 @@
 #define OUTPUT_DATA_REG_OFFSET 0x14
 #define OUTPUT_DATA_REG *((volatile unsigned int*)(OUTPUT_DATA_REG_OFFSET + GPIO_BASE_A))
 
-void LED1_STATE(bool);
-void LED2_STATE(bool);
-void LED3_STATE(bool);
+void LED1_STATE(bool state);
+void LED2_STATE(bool state);
+void LED3_STATE(bool state);
 void SETUP_GPIO();
 #endif 

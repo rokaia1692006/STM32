@@ -1,13 +1,18 @@
 #include "../MCAL/RCC/RCC.h"
-
+#include "../LIB/BIT_MATH.h"
+#include "../LIB/gpioDriver.c"
+#include "../LIB/gpioDriver.h"
 
 void setup(){
     RCC_Init();
+    SETUP_GPIO();
 
 }
 
 void loop(){
-    
+    LED1_STATE(true);
+    LED2_STATE(false);
+    LED3_STATE(true);
 }
 
 int main(void)
