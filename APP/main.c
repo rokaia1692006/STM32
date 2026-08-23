@@ -21,17 +21,27 @@ void loop(){
     bool switch1 = ReadSwitch1();
     bool switch2 = ReadSwitch2();
     bool switch3 = ReadSwitch3();
-    if (switch1 && !switch2 && !switch3) {
+    int numberofLEDS = 0 ;
+    if (switch1){
+         numberofLEDS++;
+    }
+    if (switch2){
+         numberofLEDS++;
+    }
+    if (switch3){
+         numberofLEDS++;
+    }
+    if (numberofLEDS == 3) {
         LED1_STATE(true);
         LED2_STATE(true);
         LED3_STATE(true);
     }
-    else if (!switch1 && switch2 && !switch3) {
+    else if (numberofLEDS == 2) {
         LED1_STATE(true);
         LED2_STATE(true);
         LED3_STATE(false);
     }
-    else if (!switch1 && !switch2 && switch3) {
+    else if (numberofLEDS == 1) {
         LED1_STATE(true);
         LED2_STATE(false);
         LED3_STATE(false);
