@@ -32,7 +32,7 @@
 
 
 void ADC_init();
-unsigned int ADC_read();
-float ADC_convert(unsigned int AnalogReading);
+int ADC_read();
+float ADC_convert(int AnalogReading);
 
 #endif

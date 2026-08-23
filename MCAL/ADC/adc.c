@@ -41,7 +41,7 @@ void ADC_init()
 }
 
 // Reading the Analog input
-unsigned int ADC_read()
+int ADC_read()
 {
     // Start conversion (SWSTART)
     SET_BIT(ADC1_CR2, SWSTART_BIT);
@@ -59,12 +59,12 @@ unsigned int ADC_read()
     }
 
     // Reading the data register
-    unsigned int analogRead = (unsigned int) ADC1_DR;
+    int analogRead = (int) ADC1_DR;
 
     return analogRead;
 }
 
-float ADC_convert(unsigned int AnalogReading)
+float ADC_convert(int AnalogReading)
 {
     return  ((float)(AnalogReading * V_REF)/ RES);
 }

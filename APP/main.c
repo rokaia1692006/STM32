@@ -13,7 +13,10 @@ void setup(){
 }
 
 void loop(){
-    unsigned int analogRead = ADC_read();
+    int analogRead = ADC_read();
+    if (analogRead < 0)
+        return 1;   // Timeout Error
+
     float Voltage = ADC_convert(analogRead);
 
     LED1_STATE(true);
