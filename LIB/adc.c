@@ -6,9 +6,11 @@
 
 void ADC_init()
 {
-    // Enable RCC clock for GPIO Pin
-
+    // Enable RCC clock for GPIO Pin (in gpio driver)
+    
+    
     // Enable RCC clock for ADC pin
+    
 
     // Configure the GPIO_A0 as Analog pin
 
@@ -62,7 +64,7 @@ unsigned int ADC_read()
     return analogRead;
 }
 
-unsigned int ADC_convert(unsigned int AnalogReading)
+float ADC_convert(unsigned int AnalogReading)
 {
-    return (unsigned int)((AnalogReading * V_REF)/ RES);
+    return  (float)((AnalogReading * V_REF)/ RES);
 }

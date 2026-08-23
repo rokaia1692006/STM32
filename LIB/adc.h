@@ -33,6 +33,6 @@
 
 void ADC_init();
 unsigned int ADC_read();
-unsigned int ADC_convert(unsigned int AnalogReading);
+float ADC_convert(unsigned int AnalogReading);
 
 #endif
