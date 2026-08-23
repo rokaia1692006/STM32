@@ -15,9 +15,14 @@
 #define PULLDOWN_REG *((volatile unsigned int*)(PULLDOWN_REG_OFFSET + GPIO_BASE_A))
 #define OUTPUT_DATA_REG_OFFSET 0x14
 #define OUTPUT_DATA_REG *((volatile unsigned int*)(OUTPUT_DATA_REG_OFFSET + GPIO_BASE_A))
+#define INPUT_DATA_REG_OFFSET 0x10
+#define INPUT_DATA_REG *((volatile unsigned int*)(INPUT_DATA_REG_OFFSET + GPIO_BASE_A))
 
 void LED1_STATE(bool state);
 void LED2_STATE(bool state);
 void LED3_STATE(bool state);
+bool ReadSwitch1();
+bool ReadSwitch2();
+bool ReadSwitch3();
 void SETUP_GPIO();
 #endif 

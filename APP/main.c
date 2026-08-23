@@ -13,23 +13,25 @@ void setup(){
 }
 
 void loop(){
-    int analogRead = ADC_read();
-    if (analogRead < 0)
-        return;   // Timeout Error
+    // int analogRead = ADC_read();
+    // if (analogRead < 0)
+    //     return;   // Timeout Error
 
-    float Voltage = ADC_convert(analogRead);
-
-    if (Voltage > 2.2) {
+    // float Voltage = ADC_convert(analogRead);
+    bool switch1 = ReadSwitch1();
+    bool switch2 = ReadSwitch2();
+    bool switch3 = ReadSwitch3();
+    if (switch1 && !switch2 && !switch3) {
         LED1_STATE(true);
         LED2_STATE(true);
         LED3_STATE(true);
     }
-    else if (Voltage > 1.1) {
+    else if (!switch1 && switch2 && !switch3) {
         LED1_STATE(true);
         LED2_STATE(true);
         LED3_STATE(false);
     }
-    else if (Voltage > 0) {
+    else if (!switch1 && !switch2 && switch3) {
         LED1_STATE(true);
         LED2_STATE(false);
         LED3_STATE(false);

@@ -26,6 +26,24 @@ void SETUP_GPIO(){
     //SET firts pin as analog
     SET_BIT(MODER_GPIOA, 0);
     SET_BIT(MODER_GPIOA, 1);
+    //switches w inshallah yeb2o sa7 
+    CLEAR_BIT(MODER_GPIOA,8);
+    CLEAR_BIT(MODER_GPIOA,9);
+    //switch 2 
+    CLEAR_BIT(MODER_GPIOA,10);
+    CLEAR_BIT(MODER_GPIOA,11);
+    //switch 3 
+     CLEAR_BIT(MODER_GPIOA,12);
+     CLEAR_BIT(MODER_GPIOA,13);
+     //pulldown 
+      CLEAR_BIT(PULLDOWN_REG,8);
+    SET_BIT(PULLDOWN_REG,9);
+    //switch 2 
+    CLEAR_BIT(PULLDOWN_REG,10);
+    SET_BIT(PULLDOWN_REG,11);
+    //switch 3 
+     CLEAR_BIT(PULLDOWN_REG,12);
+     SET_BIT(PULLDOWN_REG,13);
 
 }
 void LED1_STATE(bool state){
@@ -51,4 +69,13 @@ void LED3_STATE(bool state){
     else{
         CLEAR_BIT(OUTPUT_DATA_REG,3);
     }
+}
+bool ReadSwitch1(){
+    return GET_BIT(INPUT_DATA_REG,4);
+}
+bool ReadSwitch2(){
+    return GET_BIT(INPUT_DATA_REG,5);
+}
+bool ReadSwitch3(){
+    return GET_BIT(INPUT_DATA_REG,6);
 }
