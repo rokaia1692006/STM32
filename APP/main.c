@@ -1,13 +1,56 @@
 #include "../MCAL/RCC/RCC.h"
-
+#include "../LIB/BIT_MATH.h"
+//#include "../MCAL/GPIO/gpioDriver.c"
+#include "../MCAL/GPIO/gpioDriver.h"
+//#include "../MCAL/ADC/adc.c"
+#include "../MCAL/ADC/adc.h"
 
 void setup(){
     RCC_Init();
-
+    SETUP_GPIO();
+    ADC_init();
+    
 }
 
 void loop(){
-    
+    // int analogRead = ADC_read();
+    // if (analogRead < 0)
+    //     return;   // Timeout Error
+
+    // float Voltage = ADC_convert(analogRead);
+    bool switch1 = ReadSwitch1();
+    bool switch2 = ReadSwitch2();
+    bool switch3 = ReadSwitch3();
+    int numberofLEDS = 0 ;
+    if (switch1){
+         numberofLEDS++;
+    }
+    if (switch2){
+         numberofLEDS++;
+    }
+    if (switch3){
+         numberofLEDS++;
+    }
+    if (numberofLEDS == 3) {
+        LED1_STATE(true);
+        LED2_STATE(true);
+        LED3_STATE(true);
+    }
+    else if (numberofLEDS == 2) {
+        LED1_STATE(true);
+        LED2_STATE(true);
+        LED3_STATE(false);
+    }
+    else if (numberofLEDS == 1) {
+        LED1_STATE(true);
+        LED2_STATE(false);
+        LED3_STATE(false);
+    }
+    else {
+        LED1_STATE(false);
+        LED2_STATE(false);
+        LED3_STATE(false);
+    }
 }
 
 int main(void)
