@@ -12,8 +12,8 @@
 #define ADC_SR_OFFSET 0x00
 #define ADC_CR2_OFFSET 0x08
 #define ADC_SMPR2_OFFSET 0x10
-#define ADC_SQR1_OFFSET 0x34
-#define ADC_SQR3_OFFSET 0x2C
+#define ADC_SQR1_OFFSET 0x2C
+#define ADC_SQR3_OFFSET 0x34
 #define ADC_DR_OFFSET 0x4C
 
 // Target Addresses (Base Address + Offset address) ** Storing in 32-bit unsigned integer
