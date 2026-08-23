@@ -35,18 +35,18 @@ void ADC_init()
     CLEAR_BIT(ADC1_SMPR2, 2);        // 56 cycles (could be changed depending on accuracy of reading and impedance)
 
     // Enable the ADC by setting ADON
-    SET_BIT(ADC1_CR2, 0);
+    SET_BIT(ADC1_CR2, ADON_BIT);
 }
 
 // Reading the Analog input
 unsigned int ADC_read()
 {
     // Start conversion (SWSTART)
-    SET_BIT(ADC1_CR2, 30);
+    SET_BIT(ADC1_CR2, SWSTART_BIT);
 
     // Wait for EOC flag (polling)
     int timeout = 100000;
-    while (!GET_BIT(ADC1_SR, 1))
+    while (!GET_BIT(ADC1_SR, EOC_BIT))
     {
         // Keep waiting until timeout is reached
         if (timeout == 0)
