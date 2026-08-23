@@ -14,7 +14,7 @@ void setup(){
 
 void loop(){
     unsigned int analogRead = ADC_read();
-    unsigned int Voltage = ADC_convert(analogRead);
+    float Voltage = ADC_convert(analogRead);
 
     LED1_STATE(true);
     LED2_STATE(false);
