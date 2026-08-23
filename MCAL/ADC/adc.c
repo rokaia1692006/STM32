@@ -1,5 +1,5 @@
 #include "adc.h"
-#include "BIT_MATH.h"
+#include "../../LIB/BIT_MATH.h"
 
 #define V_REF 3.3
 #define RES 4096  // 2^12

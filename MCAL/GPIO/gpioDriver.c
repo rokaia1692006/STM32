@@ -1,5 +1,5 @@
 #include "gpioDriver.h"
-#include "BIT_MATH.h"
+#include "../../LIB/BIT_MATH.h"
 #include <stdbool.h>
 void SETUP_GPIO(){
     //moder = 2pin

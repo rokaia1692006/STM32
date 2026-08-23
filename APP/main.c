@@ -1,9 +1,9 @@
 #include "../MCAL/RCC/RCC.h"
 #include "../LIB/BIT_MATH.h"
-#include "../LIB/gpioDriver.c"
-#include "../LIB/gpioDriver.h"
-#include "../LIB/adc.c"
-#include "../LIB/adc.h"
+#include "../MCAL/GPIO/gpioDriver.c"
+#include "../MCAL/GPIO/gpioDriver.h"
+#include "../MCAL/ADC/adc.c"
+#include "../MCAL/ADC/adc.h"
 
 void setup(){
     RCC_Init();
