@@ -1,6 +1,9 @@
 #include "adc.h"
 #include "BIT_MATH.h"
 
+#define V_REF 3.3
+#define RES 4096  // 2^12
+
 void ADC_init()
 {
     // Enable RCC clock for GPIO Pin
@@ -21,12 +24,45 @@ void ADC_init()
     CLEAR_BIT(ADC1_SQR3, 2);
     CLEAR_BIT(ADC1_SQR3, 3);
     CLEAR_BIT(ADC1_SQR3, 4);
+    
+    // Setting the resolution to 12-bit 
+    CLEAR_BIT(ADC1_CR1, 24);
+    CLEAR_BIT(ADC1_CR1, 25);
 
     // Select Sampling time for Channel 0 (SMP0)
-    CLEAR_BIT(ADC1_SMPR2, 0);
-    CLEAR_BIT(ADC1_SMPR2, 1);
-    SET_BIT(ADC1_SMPR2, 2);        // 84 cycles (could be changed depending on accuracy of reading and impedance)
+    SET_BIT(ADC1_SMPR2, 0);
+    SET_BIT(ADC1_SMPR2, 1);
+    CLEAR_BIT(ADC1_SMPR2, 2);        // 56 cycles (could be changed depending on accuracy of reading and impedance)
 
     // Enable the ADC by setting ADON
     SET_BIT(ADC1_CR2, 0);
+}
+
+// Reading the Analog input
+unsigned int ADC_read()
+{
+    // Start conversion (SWSTART)
+    SET_BIT(ADC1_CR2, 30);
+
+    // Wait for EOC flag (polling)
+    int timeout = 100000;
+    while (!GET_BIT(ADC1_SR, 1))
+    {
+        // Keep waiting until timeout is reached
+        if (timeout == 0)
+        {
+            return -1;  // Conversion failed (Edge case)
+        }
+        timeout --;
+    }
+
+    // Reading the data register
+    unsigned int analogRead = (unsigned int) ADC1_DR;
+
+    return analogRead;
+}
+
+unsigned int ADC_convert(unsigned int AnalogReading)
+{
+    return (unsigned int)((AnalogReading * V_REF)/ RES);
 }
