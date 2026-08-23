@@ -66,5 +66,5 @@ unsigned int ADC_read()
 
 float ADC_convert(unsigned int AnalogReading)
 {
-    return  (float)((AnalogReading * V_REF)/ RES);
+    return  ((float)(AnalogReading * V_REF)/ RES);
 }
